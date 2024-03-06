@@ -32,4 +32,30 @@ public class MyPoint {
         int xy[] = {x, y};
         return xy;
     }
+
+    public void setXY(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+
+    public String toString(){
+        return "(" + x + "," + y + ")";
+    }
+
+    public double distance(int x, int y){
+        int xDiff = this.x - x;
+        int yDiff = this.y - y;
+        return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+    }
+
+    public double distance(MyPoint another){
+        int xDiff = this.x - another.x;
+        int yDiff = this.y - another.y;
+        return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+    }
+
+    public double distance(){
+        return Math.sqrt(this.x * this.x + this.y * this.y);
+    }
+
 }
