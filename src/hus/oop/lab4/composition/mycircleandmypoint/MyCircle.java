@@ -60,6 +60,18 @@ public class MyCircle {
     }
 
     public String toString(){
-        return "";
+        return "MyCircle[radius = " + radius + ", center = " + center;
+    }
+
+    public double getArea(){
+        return radius * radius * Math.PI;
+    }
+
+    public double getCircumference(){
+        return 2 * radius * Math.PI;
+    }
+
+    public double distance(MyCircle another){
+        return center.distance(another.getCenter());
     }
 }
