@@ -19,24 +19,24 @@ public class Container {
         return x1;
     }
 
-    public int getY(){
+    public int getY() {
         return y1;
     }
 
-    public int getWidth(){
+    public int getWidth() {
         return x2 - x1 + 1;
     }
 
-    public int getHeight(){
+    public int getHeight() {
         return y2 - y1 + 1;
     }
 
-    public boolean collidesWith(Ball ball){
-        if(ball.getX() - ball.getRadius() <= this.x1 || ball.getX() + ball.getRadius() >= this.x2){
+    public boolean collidesWith(Ball ball) {
+        if (ball.getX() - ball.getRadius() <= this.x1 || ball.getX() + ball.getRadius() >= this.x2) {
             ball.reflectHorizontal();
             return true;
         }
-        if(ball.getY() - ball.getRadius() <= this.y1 || ball.getY() + ball.getRadius() >= this.y2){
+        if (ball.getY() - ball.getRadius() <= this.y1 || ball.getY() + ball.getRadius() >= this.y2) {
             ball.reflectVertical();
             return true;
         }

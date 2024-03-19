@@ -14,8 +14,9 @@ public class MyDate {
     final static int DAYS_IN_MONTHS[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     private int getDayInMonth(int month) {
-        if (month == 2 && isLeapYear(year))
+        if (month == 2 && isLeapYear(year)) {
             return 29;
+        }
         return DAYS_IN_MONTHS[month - 1];
     }
 
@@ -24,10 +25,12 @@ public class MyDate {
     }
 
     public boolean isValidDate(int year, int month, int day) {
-        if (year < 1 || year > 9999 || month < 1 || month > 12 || day < 1 || day > getDayInMonth(month))
+        if (year < 1 || year > 9999 || month < 1 || month > 12 || day < 1 || day > getDayInMonth(month)) {
             return false;
-        if (month == 2 && day == 29 && !isLeapYear(year))
+        }
+        if (month == 2 && day == 29 && !isLeapYear(year)) {
             return false;
+        }
         return true;
     }
 
@@ -141,6 +144,4 @@ public class MyDate {
         }
         return this;
     }
-
-
 }

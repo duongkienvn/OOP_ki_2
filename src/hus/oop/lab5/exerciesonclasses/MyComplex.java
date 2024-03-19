@@ -88,16 +88,16 @@ public class MyComplex {
     }
 
     public MyComplex divide(MyComplex right){
-        double a = this.real;
-        double b = this.imag;
+        double thisReal = this.real;
+        double thisImag = this.imag;
 
-        double c = right.real;
-        double d = right.imag;
+        double rightReal = right.real;
+        double rightImag = right.imag;
 
-        double denominator = c * c + d * d;
+        double denominator = rightReal * rightReal + rightImag * rightImag;
 
-        double realPart = (a * c + b * d) / denominator;
-        double imagPart = (b * c - a * d) / denominator;
+        double realPart = (thisReal * rightReal + thisImag * rightImag) / denominator;
+        double imagPart = (thisImag * rightReal - thisReal * rightImag) / denominator;
         return new MyComplex(realPart, imagPart);
     }
 
@@ -106,7 +106,7 @@ public class MyComplex {
     }
 
     public MyComplex conjugate(){
-        double resultImag = this.imag * -1;
+        double resultImag = -this.imag;
         return new MyComplex(real, resultImag);
     }
 

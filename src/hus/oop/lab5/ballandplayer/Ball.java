@@ -33,13 +33,13 @@ public class Ball {
         this.z = z;
     }
 
-    public void setXYZ(float x, float y, float z){
+    public void setXYZ(float x, float y, float z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public String toString(){
+    public String toString() {
         return "(" + x + ", " + y + ", " + z + ")";
     }
 }

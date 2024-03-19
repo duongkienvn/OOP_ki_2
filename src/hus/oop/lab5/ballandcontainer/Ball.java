@@ -5,7 +5,7 @@ public class Ball {
     private int radius;
     private float xDelta, yDelta;
 
-    public Ball(float x, float y, int radius, int speed, int direction){
+    public Ball(float x, float y, int radius, int speed, int direction) {
         this.x = x;
         this.y = y;
         this.radius = radius;
@@ -53,20 +53,20 @@ public class Ball {
         this.yDelta = yDelta;
     }
 
-    public void move(){
+    public void move() {
         x += xDelta;
         y += yDelta;
     }
 
-    public void reflectHorizontal(){
+    public void reflectHorizontal() {
         xDelta = -xDelta;
     }
 
-    public void reflectVertical(){
+    public void reflectVertical() {
         yDelta = -yDelta;
     }
 
-    public String toString(){
+    public String toString() {
         return "Ball[(" + x + ", " + y + "), speed = (" + xDelta + ", " + yDelta + ")]";
     }
 
