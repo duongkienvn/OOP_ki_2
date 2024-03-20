@@ -59,8 +59,9 @@ public class Player {
     }
 
     public boolean near(Ball ball) {
-        float distance = (float) Math.sqrt(Math.pow(this.x - ball.getX(), 2) + Math.pow(this.y - ball.getY(), 2) +
-                Math.pow(this.z - ball.getZ(), 2));
+        float distance = (float) Math.sqrt(Math.pow(this.x - ball.getX(), 2)
+                + Math.pow(this.y - ball.getY(), 2)
+                + Math.pow(this.z - ball.getZ(), 2));
         return distance < 8;
     }
 
