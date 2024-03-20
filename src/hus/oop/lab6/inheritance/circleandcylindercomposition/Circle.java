@@ -1,15 +1,11 @@
-package hus.oop.lab6.inheritance.circleandcylinder;
+package hus.oop.lab6.inheritance.circleandcylindercomposition;
 
 public class Circle {
-    private double radius = 1.0;
-    private String color = "red";
+    private double radius;
+    private String color;
 
     public Circle() {
 
-    }
-
-    public Circle(double radius) {
-        this.radius = radius;
     }
 
     public Circle(double radius, String color) {
@@ -41,4 +37,3 @@ public class Circle {
         return "Circle[radius = " + radius + ", color = " + color + "]";
     }
 }
-
