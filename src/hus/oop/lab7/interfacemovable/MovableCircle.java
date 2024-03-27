@@ -1,4 +1,5 @@
-package hus.oop.lab7.movablepointandcircle;
+package hus.oop.lab7.interfacemovable;
+
 
 public class MovableCircle implements Movable{
     private int radius;
@@ -33,4 +34,5 @@ public class MovableCircle implements Movable{
     public void moveRight() {
         center.x += center.xSpeed;
     }
+
 }
