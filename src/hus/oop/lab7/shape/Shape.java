@@ -1,8 +1,8 @@
-package hus.oop.lab6.inheritance.shapeanditssubclasses;
+package hus.oop.lab7.shape;
 
 public abstract class Shape {
-    private String color = "red";
-    private boolean filled = true;
+    protected String color = "red";
+    protected boolean filled = true;
 
     public Shape() {
 
@@ -35,7 +35,6 @@ public abstract class Shape {
 
     public abstract double getArea();
 
-    public double getPerimeter() {
-        return 0;
-    }
+    public abstract double getPerimeter();
+
 }
