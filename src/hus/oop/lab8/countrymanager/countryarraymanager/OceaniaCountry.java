@@ -39,4 +39,13 @@ public class OceaniaCountry extends Country {
     public void setGdp(double gdp) {
         this.gdp = gdp;
     }
+
+    @Override
+    public String toString() {
+        return "OceaniaCountry[" + super.toString() +
+                ", population=" + population +
+                ", area=" + area +
+                ", gdp=" + gdp +
+                "]";
+    }
 }

@@ -35,6 +35,7 @@ public class ExercisesOnAlgorithms_SortingAndSearching {
         System.out.println(linearSearchIndex(arr, key));
 
     }
+
     public static boolean binarySearch(int arr[], int key, int fromIdx, int toIdx) {
         Arrays.sort(arr);
         if (fromIdx > toIdx) {
@@ -48,21 +49,23 @@ public class ExercisesOnAlgorithms_SortingAndSearching {
         else
             return binarySearch(arr, key, fromIdx, mid - 1);
     }
-    public static boolean binarySearch(int arr[], int key){
+
+    public static boolean binarySearch(int arr[], int key) {
         Arrays.sort(arr);
         int left = 0, right = arr.length - 1;
-        while(left < right){
+        while (left < right) {
             int mid = left + (right - left) / 2;
-            if(arr[mid] == key)
+            if (arr[mid] == key)
                 return true;
-            else if(arr[mid] < key)
+            else if (arr[mid] < key)
                 left = mid + 1;
             else
                 right = mid - 1;
         }
         return false;
     }
-    public static void testBinarySearch(){
+
+    public static void testBinarySearch() {
         System.out.print("Enter the number of array: ");
         int numbers = sc.nextInt();
         int arr[] = new int[numbers];
@@ -74,11 +77,12 @@ public class ExercisesOnAlgorithms_SortingAndSearching {
         System.out.println(binarySearch(arr, key));
         System.out.println(binarySearch(arr, key, 0, arr.length - 1));
     }
-    public static void bubbleSort(int arr[]){
+
+    public static void bubbleSort(int arr[]) {
         int arrLength = arr.length;
-        for(int i = 0; i < arrLength - 1; i++){
-            for(int j = 0; j < arrLength - i - 1; j++){
-                if(arr[j] > arr[j + 1]){
+        for (int i = 0; i < arrLength - 1; i++) {
+            for (int j = 0; j < arrLength - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
@@ -86,12 +90,13 @@ public class ExercisesOnAlgorithms_SortingAndSearching {
             }
         }
     }
-    public static void selectionSort(int arr[]){
+
+    public static void selectionSort(int arr[]) {
         int arrLength = arr.length;
-        for(int i = 0; i < arrLength - 1; i++){
+        for (int i = 0; i < arrLength - 1; i++) {
             int min_Idx = i;
-            for(int j = i + 1; j < arrLength; j++){
-                if(arr[min_Idx] > arr[j]){
+            for (int j = i + 1; j < arrLength; j++) {
+                if (arr[min_Idx] > arr[j]) {
                     min_Idx = j;
                 }
             }
@@ -100,19 +105,21 @@ public class ExercisesOnAlgorithms_SortingAndSearching {
             arr[min_Idx] = temp;
         }
     }
-    public static void insertionSort(int arr[]){
+
+    public static void insertionSort(int arr[]) {
         int arrLength = arr.length;
-        for(int i = 1; i < arrLength; i++){
+        for (int i = 1; i < arrLength; i++) {
             int key = arr[i];
             int idx = i - 1;
-            while(idx >= 0 && key < arr[idx]){
+            while (idx >= 0 && key < arr[idx]) {
                 arr[idx + 1] = arr[idx];
                 idx--;
             }
             arr[idx + 1] = key;
         }
     }
-    public static void testBubbleSort(){
+
+    public static void testBubbleSort() {
         System.out.print("Enter the number of array: ");
         int numbers = sc.nextInt();
         int arr[] = new int[numbers];
@@ -121,12 +128,13 @@ public class ExercisesOnAlgorithms_SortingAndSearching {
         }
         bubbleSort(arr);
         System.out.println("Array aftering sorting:");
-        for(int idx: arr){
+        for (int idx : arr) {
             System.out.print(idx + " ");
         }
         System.out.println();
     }
-    public static void testSelectionSort(){
+
+    public static void testSelectionSort() {
         System.out.print("Enter the number of array: ");
         int numbers = sc.nextInt();
         int arr[] = new int[numbers];
@@ -135,12 +143,13 @@ public class ExercisesOnAlgorithms_SortingAndSearching {
         }
         selectionSort(arr);
         System.out.println("Array aftering sorting:");
-        for(int idx: arr){
+        for (int idx : arr) {
             System.out.print(idx + " ");
         }
         System.out.println();
     }
-    public static void testInsertionSort(){
+
+    public static void testInsertionSort() {
         System.out.print("Enter the number of array: ");
         int numbers = sc.nextInt();
         int arr[] = new int[numbers];
@@ -149,11 +158,12 @@ public class ExercisesOnAlgorithms_SortingAndSearching {
         }
         insertionSort(arr);
         System.out.println("Array aftering sorting:");
-        for(int idx: arr){
+        for (int idx : arr) {
             System.out.print(idx + " ");
         }
         System.out.println();
     }
+
     public static void main(String[] args) {
         testLinearSearch();
         testBinarySearch();

@@ -30,4 +30,11 @@ public abstract class Country {
     public abstract double getArea();
 
     public abstract double getGdp();
+
+    @Override
+    public String toString() {
+        return "Country[" +
+                "code=" + code +
+                ", name=" + name + "]";
+    }
 }

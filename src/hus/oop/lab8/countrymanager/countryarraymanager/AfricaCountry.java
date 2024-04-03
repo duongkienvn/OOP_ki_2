@@ -39,4 +39,12 @@ public class AfricaCountry extends Country {
     public void setGdp(double gdp) {
         this.gdp = gdp;
     }
+
+    public String toString() {
+        return "AfricaCountry[" + super.toString() +
+                ", population=" + population +
+                ", area=" + area +
+                ", gdp=" + gdp +
+                "]";
+    }
 }

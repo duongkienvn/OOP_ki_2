@@ -39,4 +39,13 @@ public class EuropeCountry extends Country {
     public void setGdp(double gdp) {
         this.gdp = gdp;
     }
+
+    @Override
+    public String toString() {
+        return "EuropeCountry[" + super.toString() +
+                ", population=" + population +
+                ", area=" + area +
+                ", gdp=" + gdp +
+                "]";
+    }
 }
