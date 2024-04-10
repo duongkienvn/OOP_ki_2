@@ -1,6 +1,5 @@
-package hus.oop.homework;
+package hus.oop.lab1;
 
-import java.nio.file.Path;
 import java.util.Scanner;
 
 public class StringAndCharacterHomework {

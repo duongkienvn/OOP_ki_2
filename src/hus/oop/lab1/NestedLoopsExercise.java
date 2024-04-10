@@ -1,4 +1,4 @@
-package hus.oop.homework;
+package hus.oop.lab1;
 
 import java.util.Scanner;
 

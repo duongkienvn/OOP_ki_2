@@ -1,6 +1,5 @@
-package hus.oop.homework;
+package hus.oop.lab1;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Matrix {

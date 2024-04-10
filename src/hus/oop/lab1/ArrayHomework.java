@@ -1,9 +1,9 @@
-package hus.oop.homework;
+package hus.oop.lab1;
 
 import java.util.Scanner;
 
 public class ArrayHomework {
-    public static void printArrayStars(Scanner in){
+    public static void printArrayStars(Scanner in) {
         final int NUM_ITEMS;
         int items[];
 
@@ -11,12 +11,12 @@ public class ArrayHomework {
         NUM_ITEMS = in.nextInt();
         items = new int[NUM_ITEMS];
         System.out.print("Enter the value of all items (separated by space): ");
-        for(int i = 0; i < NUM_ITEMS; i++){
+        for (int i = 0; i < NUM_ITEMS; i++) {
             items[i] = in.nextInt();
         }
-        for(int i = 0; i < NUM_ITEMS; i++){
+        for (int i = 0; i < NUM_ITEMS; i++) {
             System.out.print(i + ": ");
-            for(int starNo = 0; starNo < items[i]; starNo++){
+            for (int starNo = 0; starNo < items[i]; starNo++) {
                 System.out.print("*");
             }
             System.out.println("(" + items[i] + ")");
