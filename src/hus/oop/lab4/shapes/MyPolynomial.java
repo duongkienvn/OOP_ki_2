@@ -3,15 +3,15 @@ package hus.oop.lab4.shapes;
 public class MyPolynomial {
     private double coeffs[];
 
-    public MyPolynomial(double... coeffs){
+    public MyPolynomial(double... coeffs) {
         this.coeffs = coeffs;
     }
 
-    public double[] getCoeffs(){
+    public double[] getCoeffs() {
         return coeffs;
     }
 
-    public int getDegree(){
+    public int getDegree() {
         return coeffs.length - 1;
     }
 
@@ -46,13 +46,12 @@ public class MyPolynomial {
         return new MyPolynomial(resultCoeffs);
     }
 
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(int i = coeffs.length - 1; i >= 0; i--){
-            if(i == 0){
+        for (int i = coeffs.length - 1; i >= 0; i--) {
+            if (i == 0) {
                 sb.append(coeffs[i]);
-            }
-            else{
+            } else {
                 sb.append(coeffs[i] + "x^" + i + " + ");
             }
         }
