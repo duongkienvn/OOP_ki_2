@@ -7,6 +7,7 @@ public interface RootSolver {
      * @param lower
      * @param upper
      * @return nghiệm của đa thức.
+     * dương
      */
     double solve(Polynomial polynomial, double lower, double upper);
 }

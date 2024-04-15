@@ -94,7 +94,7 @@ public class ListPolynomial extends AbstractPolynomial {
         /* TODO */
         double result = 0;
         int degree = degree();
-        for (int i = 0; i < degree; i++) {
+        for (int i = 0; i <= degree; i++) {
             result += coefficients.get(i) * Math.pow(x, i);
         }
 

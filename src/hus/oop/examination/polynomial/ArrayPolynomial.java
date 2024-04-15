@@ -108,7 +108,7 @@ public class ArrayPolynomial extends AbstractPolynomial {
         /* TODO */
         double result = 0;
         int degree = degree();
-        for (int i = 0; i < degree; i++) {
+        for (int i = 0; i <= degree; i++) {
             result += coefficients[i] * Math.pow(x, i);
         }
         return result;
@@ -168,33 +168,21 @@ public class ArrayPolynomial extends AbstractPolynomial {
      */
     public ArrayPolynomial multiply(ArrayPolynomial another) {
         /* TODO */
-//        int maxDegree = this.degree() + another.degree();
-//        double resultCoeffs[] = new double[maxDegree + 1];
-//
-//        for (int i = 0; i <= this.degree(); i++) {
-//            for (int j = 0; j <= another.degree(); j++) {
-//                resultCoeffs[i + j] += coefficients[i] * another.coefficients[j];
-//            }
-//        }
-//
-//        ArrayPolynomial result = new ArrayPolynomial();
-//        for (double coeff : resultCoeffs) {
-//            result.append(coeff);
-//        }
-//
-//        return result;
-        int sumDeg = this.degree() + another.degree();
-        this.coefficients = Arrays.copyOf(coefficients, sumDeg + 1);
-        for (int i = 0; i <= sumDeg; i++) {
-            double sum = 0.0;
-            for (int j = 0; j <= i; j++) {
-                if (j <= this.degree() && (i - j) <= another.degree()) {
-                    sum += this.coefficients[j] * another.coefficients[i - j];
-                }
+        int maxDegree = this.degree() + another.degree();
+        double resultCoeffs[] = new double[maxDegree + 1];
+
+        for (int i = 0; i <= this.degree(); i++) {
+            for (int j = 0; j <= another.degree(); j++) {
+                resultCoeffs[i + j] += coefficients[i] * another.coefficients[j];
             }
-            this.set(sum, i);
         }
-        return this;
+
+        ArrayPolynomial result = new ArrayPolynomial();
+        for (double coeff : resultCoeffs) {
+            result.append(coeff);
+        }
+
+        return result;
     }
 
     /**
