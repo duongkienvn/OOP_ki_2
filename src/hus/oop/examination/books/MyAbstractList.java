@@ -16,6 +16,6 @@ public abstract class MyAbstractList implements MyList {
             }
         }
         stringBuilder.append("\n");
-        return String.valueOf(stringBuilder);
+        return stringBuilder.toString();
     }
 }

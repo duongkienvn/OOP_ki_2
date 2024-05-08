@@ -11,7 +11,6 @@ public class BookManager {
     public BookManager(MyList data) {
         /* TODO */
         this.books = data;
-
     }
 
     /**

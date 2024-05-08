@@ -14,12 +14,16 @@ public class TestMyList {
            (ví dụ, NguyenVanA_123456_MyList.txt)
          - Nộp kết quả chạy chương trình (file text trên) cùng với các file source code.
          */
-
-        saveToFile("C:\\Users\\Dell\\eclipse-workspace\\OOP_ki_2\\" +
-                "src\\hus\\oop\\examination\\books\\DuongCongKien_23001895_MyList.txt");
+        System.out.println("testMyArrayList:");
+        testMyArrayList();
+        System.out.println("\ntestMyLinkedList:");
+        testMyLinkedList();
+        MyList myList = createMyArrayList();
+        System.out.println("\ntestIterator");
+        testIterator(myList);
     }
 
-    public static void testMyArrayList(PrintWriter writer) {
+    public static void testMyArrayList() {
         /*
          TODO
 
@@ -40,17 +44,17 @@ public class TestMyList {
         MyList increasingByPage = bookManager.sortByPageNumber(true);
         MyList decreasingByPage = bookManager.sortByPageNumber(false);
 
-        writer.println("Sorting by title ascending:");
-        writer.println(increasingByTitle.toString());
-        writer.println("Sorting by title descending:");
-        writer.println(decreasingByTitle.toString());
-        writer.println("Sorting by page number ascending:");
-        writer.println(increasingByPage.toString());
-        writer.println("Sorting by page number descending:");
-        writer.println(decreasingByPage.toString());
+        System.out.println("Sorting by title ascending:");
+        System.out.println(increasingByTitle.toString());
+        System.out.println("Sorting by title descending:");
+        System.out.println(decreasingByTitle.toString());
+        System.out.println("Sorting by page number ascending:");
+        System.out.println(increasingByPage.toString());
+        System.out.println("Sorting by page number descending:");
+        System.out.println(decreasingByPage.toString());
     }
 
-    public static void testMyLinkedList(PrintWriter writer) {
+    public static void testMyLinkedList() {
         /*
          TODO
 
@@ -71,14 +75,14 @@ public class TestMyList {
         MyList increasingByPage = bookManager.sortByPageNumber(true);
         MyList decreasingByPage = bookManager.sortByPageNumber(false);
 
-        writer.println("Sorting by title ascending:");
-        writer.println(increasingByTitle.toString());
-        writer.println("Sorting by title descending:");
-        writer.println(decreasingByTitle.toString());
-        writer.println("Sorting by page number ascending:");
-        writer.println(increasingByPage.toString());
-        writer.println("Sorting by page number descending:");
-        writer.println(decreasingByPage.toString());
+        System.out.println("Sorting by title ascending:");
+        System.out.println(increasingByTitle.toString());
+        System.out.println("Sorting by title descending:");
+        System.out.println(decreasingByTitle.toString());
+        System.out.println("Sorting by page number ascending:");
+        System.out.println(increasingByPage.toString());
+        System.out.println("Sorting by page number descending:");
+        System.out.println(decreasingByPage.toString());
     }
 
     public static void testIterator(MyList myList) {
@@ -127,16 +131,5 @@ public class TestMyList {
         myLinkedList.append(new Book("Book 10", 2007, 700));
 
         return myLinkedList;
-    }
-
-    public static void saveToFile(String fileName) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
-            writer.write("Results of testing MyArrayList:\n");
-            testMyArrayList(writer);
-            writer.write("Results of testing MyLinkedList:\n");
-            testMyLinkedList(writer);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
     }
 }
