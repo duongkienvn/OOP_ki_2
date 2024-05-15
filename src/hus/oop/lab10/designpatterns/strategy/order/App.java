@@ -26,7 +26,6 @@ public class App {
     public static void main(String[] args) throws IOException {
         while (!order.isClosed()) {
             int cost;
-
             String continueChoice;
             do {
                 System.out.print("Please, select a product: " + "\n" +
@@ -46,7 +45,7 @@ public class App {
             if (strategy == null) {
                 System.out.println(" Please , select a payment method : " + "\n"
                         + "1 − PalPay" + "\n"
-                                + "2 − Credit Card");
+                        + "2 − Credit Card");
                 String paymentMethod = reader.readLine();
                 if (paymentMethod.equals("1")) {
                     strategy = new PayByPaypal();

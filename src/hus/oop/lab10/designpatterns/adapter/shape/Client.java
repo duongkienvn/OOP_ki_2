@@ -15,7 +15,4 @@ public class Client {
         System.out.println(hole.fits(smallSquarePegAdapter));
         System.out.println(hole.fits(largeSquarePegAdapter));
     }
-
-
-
 }
