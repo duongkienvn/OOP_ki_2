@@ -14,8 +14,8 @@ public class OperaMailClient implements MailClient {
     }
 
     @Override
-    public boolean acceptMail(MailClientVisitor visitor) {
-        visitor.visit();
+    public boolean accept(MailClientVisitor visitor) {
+        visitor.visit(this);
         return true;
     }
 }

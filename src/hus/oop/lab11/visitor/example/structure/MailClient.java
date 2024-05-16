@@ -5,5 +5,5 @@ import hus.oop.lab11.visitor.example.vistors.MailClientVisitor;
 public interface MailClient {
     void sendMail(String[] mailInfo);
     void receiveMail(String[] mailInfo);
-    boolean acceptMail(MailClientVisitor visitor);
+    boolean accept(MailClientVisitor visitor);
 }
