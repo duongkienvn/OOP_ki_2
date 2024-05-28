@@ -7,24 +7,31 @@ public abstract class AbstractPolynomial implements Polynomial {
      */
     @Override
     public String toString() {
-        /* TODO */
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder polynomial = new StringBuilder();
         int degree = degree();
-        double coeffs[] = coefficients();
-
-        stringBuilder.append("[");
         for (int i = degree; i >= 0; i--) {
-            double coeff = coeffs[i];
-            
-            if (i == 0) {
-                stringBuilder.append(coeff);
-            } else {
-                stringBuilder.append(coeff + "x^" + i + " + ");
+            double coeff = coefficient(i);
+            if (coeff != 0) {
+                if (polynomial.length() > 0 && coeff > 0) {
+                    polynomial.append(" + ");
+                } else {
+                    polynomial.append(" ");
+                }
+                if (i == 0) {
+                    polynomial.append(coeff);
+                } else {
+                    if (coeff != 1) {
+                        polynomial.append(coeff);
+                    }
+                    polynomial.append("x");
+                    if (i > 1) {
+                        polynomial.append("^").append(i);
+                    }
+                }
             }
         }
-        stringBuilder.append("]");
-
-        return stringBuilder.toString();
+        return polynomial.toString();
+        /* TODO */
     }
 
     /**
@@ -32,15 +39,12 @@ public abstract class AbstractPolynomial implements Polynomial {
      * @return mảng các phần tử là hệ số của đa thức đạo hàm.
      */
     public double[] differentiate() {
-        /* TODO */
-        int degree = degree();
-        double coeffs[] = coefficients();
-        double derivativeCoefficients[] = new double[degree];
-
-        for (int i = 1; i <= degree; i++) {
-            derivativeCoefficients[i - 1] = coeffs[i] * i;
+        double[] coeffi = coefficients();
+        double[] differ = new double[coeffi.length - 1];
+        for (int i = 0; i < differ.length; i++) {
+            differ[i] = coeffi[i + 1] * (i + 1);
         }
-
-        return derivativeCoefficients;
+        return differ;
+        /* TODO */
     }
 }

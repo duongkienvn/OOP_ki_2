@@ -2,6 +2,9 @@ package hus.oop.review.integration;
 
 public class IntegrationCalculatorTestDrive {
     public static void main(String[] args) {
+        testArrayPolynomial();
+        testListPolynomial();
+        testIntegrationCalculator();
         /*
          TODO
 
@@ -13,6 +16,31 @@ public class IntegrationCalculatorTestDrive {
     }
 
     public static void testArrayPolynomial() {
+        System.out.println("TestArrayPolynomial: ");
+        ArrayPolynomial poly1 = new ArrayPolynomial();
+        poly1.append(1);
+        poly1.append(2);
+        poly1.append(-1);
+        poly1.append(0);
+        poly1.append(-9);
+        System.out.println("Poly1: " + poly1.toString());
+
+        ArrayPolynomial poly2 = new ArrayPolynomial();
+        poly2.append(6);
+        poly2.append(8);
+        poly2.append(-2);
+        poly2.append(9);
+        poly2.append(-4);
+        System.out.println("Poly2: " + poly2.toString());
+
+        System.out.println("Poly1 + Poly2: " + poly1.plus(poly2).toString());
+        System.out.println("Poly1 - Poly2: " + poly1.minus(poly2).minus(poly2).toString());
+        System.out.println("Poly1 * Poly2: " + poly1.multiply(poly2).toString());
+
+        poly1.set(10, 8);
+        System.out.println("Now Poly1: " + poly1.toString());
+        System.out.println("Poly1(8): " + poly1.evaluate(8));
+        System.out.println("-----------------------------------------------------------------");
         /*
          TODO
 
@@ -23,6 +51,31 @@ public class IntegrationCalculatorTestDrive {
     }
 
     public static void testListPolynomial() {
+        System.out.println("TestListPolynomial: ");
+        ListPolynomial poly1 = new ListPolynomial();
+        poly1.append(1);
+        poly1.append(2);
+        poly1.append(-1);
+        poly1.append(0);
+        poly1.append(-9);
+        System.out.println("Poly1: " + poly1.toString());
+
+        ListPolynomial poly2 = new ListPolynomial();
+        poly2.append(6);
+        poly2.append(8);
+        poly2.append(-2);
+        poly2.append(9);
+        poly2.append(-4);
+        System.out.println("Poly2: " + poly2.toString());
+
+        System.out.println("Poly1 + Poly2: " + poly1.plus(poly2).toString());
+        System.out.println("Poly1 - Poly2: " + poly1.minus(poly2).minus(poly2).toString());
+        System.out.println("Poly1 * Poly2: " + poly1.multiply(poly2).toString());
+
+        poly1.set(10, 8);
+        System.out.println("Now Poly1: " + poly1.toString());
+        System.out.println("Poly1(8): " + poly1.evaluate(8));
+        System.out.println("-----------------------------------------------------------------");
         /*
          TODO
 
@@ -33,6 +86,28 @@ public class IntegrationCalculatorTestDrive {
     }
 
     public static void testIntegrationCalculator() {
+        ListPolynomial poly1 = new ListPolynomial();
+        poly1.append(1);
+        poly1.append(2);
+        poly1.append(-1);
+        poly1.append(0);
+        poly1.append(-9);
+
+        Integrator integrator1 = new MidpointRule(0.000001, 10000);
+        IntegrationCalculator integrationCalculator = new IntegrationCalculator(integrator1, poly1);
+        System.out.println("Poly1: " + poly1.toString());
+        System.out.println("MidpointRule: " + integrationCalculator.integrate(4, 5));
+        System.out.println();
+
+
+        integrationCalculator.setIntegrator(new SimpsonRule(0.000001, 10000));
+        System.out.println("Poly1: " + poly1.toString());
+        System.out.println("SimpsonRule: " + integrationCalculator.integrate(-4, 5));
+        System.out.println();
+
+        integrationCalculator.setIntegrator(new TrapezoidRule(0.000001, 10000));
+        System.out.println("Poly1: " + poly1.toString());
+        System.out.println("TrapezoidRule: " + integrationCalculator.integrate(-6, 0));
         /*
          TODO
 

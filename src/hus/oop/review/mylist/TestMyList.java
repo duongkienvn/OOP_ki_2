@@ -37,7 +37,6 @@ public class TestMyList {
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
-
     }
 
     public static void testMyLinkedList() {

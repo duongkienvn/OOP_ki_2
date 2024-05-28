@@ -1,208 +1,195 @@
-package hus.oop.review.integration;
-
-import java.util.Arrays;
+package hus.oop.midterm.polynomial;
 
 public class ArrayPolynomial extends AbstractPolynomial {
     private static final int DEFAULT_CAPACITY = 2;
-    private double[] coefficents;
+    private double[] coefficients;
     private int size;
-
-    public ArrayPolynomial(double[] data) {
-        this.coefficents = data;
-        size = data.length;
-    }
 
     /**
      * Khởi tạo dữ liệu mặc định.
      */
     public ArrayPolynomial() {
-        coefficents = new double[DEFAULT_CAPACITY];
-        size = 0;
         /* TODO */
+        coefficients = new double[DEFAULT_CAPACITY];
+        size = 0;
     }
 
     /**
      * Lấy hệ số của đa thức tại phần tử index
-     *
      * @return hệ số tại phần tử index.
      */
     @Override
     public double coefficient(int index) {
-        return coefficents[index];
         /* TODO */
+        if (index < 0 || index >= size) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        return coefficients[index];
     }
 
     /**
      * Lấy mảng các hệ số của đa thức.
-     *
      * @return mảng các hệ số của đa thức.
      */
     @Override
     public double[] coefficients() {
-        double[] newCoeff = new double[size];
-        System.arraycopy(coefficents, 0, newCoeff, 0, size);
-        return newCoeff;
         /* TODO */
+        return coefficients;
     }
 
     /**
      * Thêm một phần tử có hệ số coefficient vào cuối đa thức.
-     *
      * @param coefficient
      * @return đa thức hiện tại.
      */
     public ArrayPolynomial append(double coefficient) {
-        if (size == this.coefficents.length) {
+        /* TODO */
+        if (size >= coefficients.length) {
             enlarge();
         }
-        this.coefficents[size++] = coefficient;
+        coefficients[size++] = coefficient;
         return this;
-        /* TODO */
     }
 
     /**
      * Thêm một phần tử có hệ số coefficient vào vị trí index.
-     *
      * @param coefficient
      * @param index
      * @return đa thức hiện tại.
      */
     public ArrayPolynomial insert(double coefficient, int index) {
-        if (size == this.coefficents.length) {
+        /* TODO */
+        if (index < 0 || index > size) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+
+        if (size >= coefficients.length) {
             enlarge();
         }
-        System.arraycopy(coefficents, index, coefficents, index + 1, size - index);
-        this.coefficents[index] = coefficient;
+
+        for (int i = this.size; i > index; i--) {
+            coefficients[i] = coefficients[i - 1];
+        }
+        coefficients[index] = coefficient;
         size++;
         return this;
-        /* TODO */
     }
 
     /**
      * Thay đổi hệ số của đa thức tại phần tử index.
-     *
      * @param coefficient
      * @param index
      * @return đa thức hiện tại.
      */
     public ArrayPolynomial set(double coefficient, int index) {
-        this.coefficents[index] = coefficient;
-        return this;
         /* TODO */
+        coefficients[index] = coefficient;
+        return this;
     }
 
     /**
      * Lấy bậc của đa thức.
-     *
      * @return bậc của đa thức.
      */
     @Override
     public int degree() {
-        return size - 1;
         /* TODO */
+        return this.size - 1;
     }
 
     /**
      * Tính giá trị của đa thức khi biết giá trị của x.
-     *
      * @return giá trị của đa thức.
      */
     @Override
     public double evaluate(double x) {
+        /* TODO */
         double result = 0;
-        for (int i = 0; i < size; i++) {
-            result += this.coefficents[i] * Math.pow(x, i);
+        int degree = degree();
+        for (int i = 0; i <= degree; i++) {
+            result += coefficients[i] * Math.pow(x, i);
         }
         return result;
-        /* TODO */
     }
 
     /**
      * Lấy đạo hàm của đa thức.
-     *
      * @return Đa thức kiểu ArrayPolynomial là đa thức đạo hàm của đa thức hiện tại.
      */
     @Override
     public Polynomial derivative() {
-        double[] differ = this.differentiate();
-        return new ArrayPolynomial(differ);
         /* TODO */
+        ArrayPolynomial derivative = new ArrayPolynomial();
+        double derivativeCoeffs[] = differentiate();
+        for (double coeff : derivativeCoeffs) {
+            derivative.append(coeff);
+        }
+        return derivative;
     }
 
     /**
      * Cộng một đa thức khác vào đa thức hiện tại.
-     *
      * @param another
      * @return đa thức hiện tại.
      */
     public ArrayPolynomial plus(ArrayPolynomial another) {
-        int maxSize = Math.max(this.size, another.size);
-        while (this.coefficents.length < maxSize) {
-            enlarge();
-        }
-        for (int i = 0; i < maxSize; i++) {
-            double coeffi1 = (i < this.size) ? this.coefficents[i] : 0;
-            double coeffi2 = (i < another.size) ? another.coefficents[i] : 0;
-            this.set(coeffi1 + coeffi2, i);
+        /* TODO */
+        int maxDegree = Math.max(this.degree(), another.degree());
+        for (int i = 0; i <= maxDegree; i++) {
+            double coeff = (i < size ? coefficients[i] : 0) +
+                    (i < another.size ? another.coefficients[i] : 0);
+            this.set(coeff, i);
         }
         return this;
-        /* TODO */
     }
 
     /**
      * Trừ đa thức hiện tại với đa thức khác.
-     *
      * @param another
      * @return đa thức hiện tại.
      */
     public ArrayPolynomial minus(ArrayPolynomial another) {
-        int maxSize = Math.max(this.size, another.size);
-        while (this.coefficents.length < maxSize) {
-            enlarge();
-        }
-        for (int i = 0; i < maxSize; i++) {
-            double coeffi1 = (i < this.size) ? this.coefficents[i] : 0;
-            double coeffi2 = (i < another.size) ? another.coefficents[i] : 0;
-            set(coeffi1 - coeffi2, i);
+        /* TODO */
+        int maxDegree = Math.max(this.degree(), another.degree());
+        for (int i = 0; i < maxDegree; i++) {
+            double coeff = (i < size ? coefficients[i] : 0) -
+                    (i < another.size ? another.coefficients[i] : 0);
+            this.set(coeff, i);
         }
         return this;
-        /* TODO */
     }
 
     /**
      * Nhân đa thức hiện tại với đa thức khác.
-     *
      * @param another
      * @return đa thức hiện tại.
      */
     public ArrayPolynomial multiply(ArrayPolynomial another) {
-        int newSize = size + another.size - 1;
-        double[] tempCoefficients = Arrays.copyOf(coefficents, size);
-        while (this.coefficents.length < newSize){
-            enlarge();
-        }
-        for (int i = 0; i < newSize; i++) {
-            double sum = 0.0;
-            for (int j = 0; j <= i; j++) {
-                if (j < size && (i - j) < another.size) {
-                    sum += tempCoefficients[j] * another.coefficents[i - j];
-                }
-            }
-            set(sum, i);
-        }
-        size = newSize;
-        return this;
         /* TODO */
+        int maxDegree = this.degree() + another.degree();
+        double resultCoeffs[] = new double[maxDegree + 1];
+
+        for (int i = 0; i <= this.degree(); i++) {
+            for (int j = 0; j <= another.degree(); j++) {
+                resultCoeffs[i + j] += coefficients[i] * another.coefficients[j];
+            }
+        }
+
+        ArrayPolynomial result = new ArrayPolynomial();
+        for (double coeff : resultCoeffs) {
+            result.append(coeff);
+        }
+
+        return result;
     }
 
     /**
      * Thêm kích thước để lưu đa thức khi cần thiết.
      */
     private void enlarge() {
-        int newCapacity = coefficents.length * 2;
-        double[] newCoefficients = new double[newCapacity];
-        System.arraycopy(coefficents, 0, newCoefficients, 0, size);
-        coefficents = newCoefficients;
         /* TODO */
+        double newArray[] = new double[coefficients.length * 2];
+        System.arraycopy(coefficients, 0, newArray, 0, coefficients.length);
+        coefficients = newArray;
     }
 }

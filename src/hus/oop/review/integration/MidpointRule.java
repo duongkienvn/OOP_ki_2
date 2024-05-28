@@ -5,6 +5,8 @@ public class MidpointRule implements Integrator {
     private int maxIterations;
 
     public MidpointRule(double precision, int maxIterations) {
+        this.maxIterations = maxIterations;
+        this.precision = precision;
         /* TODO */
     }
 
@@ -13,6 +15,7 @@ public class MidpointRule implements Integrator {
      * hoặc có số vòng vượt quá ngưỡng quy định.
      * Độ chính xác được xác định như sau, chọn n0 tùy ý, sau đó tính I_n với n = n0, 2n0, 4n0, ...
      * Việc tính toán dừng lại khi |I_2n - In|/3 < eps (precision), hoặc số lần chia đôi vượt quá ngưỡng quy định (maxIterations).
+     *
      * @param poly
      * @param lower
      * @param upper
@@ -20,18 +23,27 @@ public class MidpointRule implements Integrator {
      */
     @Override
     public double integrate(Polynomial poly, double lower, double upper) {
-        /* TODO */
+        int numOfSubIntervals = 1;
+        double previousResult = integrate(poly, lower, upper, numOfSubIntervals);
+        for (int i = 0; i <= maxIterations; i++) {
+            numOfSubIntervals *= 2;
+            double currentResult = integrate(poly, lower, upper, numOfSubIntervals);
+            if (Math.abs(currentResult - previousResult) / 3 < precision) {
+                return currentResult;
+            }
+            previousResult = currentResult;
+        }
+        return previousResult;
     }
 
-    /**
-     * Phương thức tính xấp xỉ giá trị tích phân với numOfSubIntervals khoảng phân hoạch đều.
-     * @param poly
-     * @param lower
-     * @param upper
-     * @param numOfSubIntervals
-     * @return giá trị xấp xỉ giá trị tích phân.
-     */
     private double integrate(Polynomial poly, double lower, double upper, int numOfSubIntervals) {
-        /* TODO */
+        double intervalLength = (upper - lower) / numOfSubIntervals;
+        double sum = 0.0;
+        for (int i = 0; i < numOfSubIntervals; i++) {
+            double midPoint = lower + (i + 0.5) * intervalLength;
+            sum += poly.evaluate(midPoint);
+        }
+        return sum * intervalLength;
     }
+
 }
