@@ -11,8 +11,7 @@ public class App {
     private static final String COMMA_DELIMITER = ",";
 
     public static void main(String[] args) {
-        testOriginalData();
-
+        init();
         /*
         TODO
 
@@ -23,10 +22,43 @@ public class App {
         <TenSinhVien_MaSinhVien_StudentManager>.zip (Ví dụ, NguyenVanA_123456_StudentManager.zip),
         nộp lên classroom.
          */
+        System.out.println("Testing original data:");
+        testOriginalData();
+
+        System.out.println("\nTesting sorting by year of birth in increasing order:");
+        testSortYearOfBirthIncreasing();
+
+        System.out.println("\nTesting sorting by year of birth in decreasing order:");
+        testSortYearOfBirthDecreasing();
+
+        System.out.println("\nTesting sorting by average grade in increasing order:");
+        testSortAverageGradeIncreasing();
+
+        System.out.println("\nTesting sorting by average grade in decreasing order:");
+        testSortAverageGradeDecreasing();
+
+        System.out.println("\nTesting filtering students with the highest maths grades:");
+        testFilterStudentsHighestMathsGrade();
+
+        System.out.println("\nTesting filtering students with the lowest maths grades:");
+        testFilterStudentsLowestMathsGrade();
+
+        System.out.println("\nTesting filtering students with the highest average grades:");
+        testFilterStudentsHighestAverageGrade();
+
+        System.out.println("\nTesting filtering students with the lowest average grades:");
+        testFilterStudentsLowestAverageGrade();
+
+        System.out.println("\nTesting filtering students with average grades higher than 7:");
+        testFilterStudentsHigherThanAverageGrade();
+
+        System.out.println("\nTesting filtering students with average grades lower than 9:");
+        testFilterStudentsLowerThanAverageGrade();
     }
 
     public static void init() {
-        String filePath = "data/students.csv";
+        String filePath = "C:\\Users\\Dell\\eclipse-workspace\\OOP_ki_2\\src\\hus\\oop\\" +
+                "finalexam\\de3\\data\\students.csv";
         readListData(filePath);
     }
 
@@ -49,9 +81,25 @@ public class App {
 
                 /*
                 TODO
-
                 Đọc được dữ liệu, tạo ra các đối tượng sinh viên ở đây, và cho vào StudentManager để quản lý.
                 */
+                String id = dataList.get(0);
+                String lastName = dataList.get(1);
+                String firstName = dataList.get(2);
+                int yearOfBirth = Integer.parseInt(dataList.get(3));
+                double mathsGrade = Double.parseDouble(dataList.get(4));
+                double physicsGrade = Double.parseDouble(dataList.get(5));
+                double chemistryGrade = Double.parseDouble(dataList.get(6));
+
+                Student student = new Student.StudentBuilder(id)
+                        .withLastname(lastName)
+                        .withFirstname(firstName)
+                        .withYearOfBirth(yearOfBirth)
+                        .withMathsGrade(mathsGrade)
+                        .withPhysicsGrade(physicsGrade)
+                        .withChemistryGrade(chemistryGrade)
+                        .build();
+                StudentManager.getInstance().append(student);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -85,69 +133,63 @@ public class App {
     }
 
     public static void testOriginalData() {
-        init();
         String studentIds = StudentManager.getInstance().idOfStudentsToString(StudentManager.getInstance().getStudentList());
         System.out.print(studentIds);
     }
 
     public static void testSortYearOfBirthIncreasing() {
-        init();
-        List<Student> students = StudentManager.getInstance().sortYearOfBirthIncreasing();
-        String studentIdsString = StudentManager.getInstance().idOfStudentsToString(students);
-        System.out.print(studentIdsString);
+        List<Student> sortedList = StudentManager.getInstance().sortYearOfBirthIncreasing();
+        StudentManager.print(sortedList);
     }
 
     public static void testSortYearOfBirthDecreasing() {
-        init();
-        List<Student> students = StudentManager.getInstance().sortYearOfBirthDecreasing();
-        String studentIdsString = StudentManager.getInstance().idOfStudentsToString(students);
-        System.out.print(studentIdsString);
+        List<Student> sortedList = StudentManager.getInstance().sortYearOfBirthDecreasing();
+        StudentManager.print(sortedList);
     }
 
     public static void testSortAverageGradeIncreasing() {
         /* TODO */
+        List<Student> sortedList = StudentManager.getInstance().sortAverageGradeIncreasing();
+        StudentManager.print(sortedList);
     }
 
     public static void testSortAverageGradeDecreasing() {
         /* TODO */
+        List<Student> sortedList = StudentManager.getInstance().sortAverageGradeDecreasing();
+        StudentManager.print(sortedList);
     }
 
     public static void testFilterStudentsHighestMathsGrade() {
-        init();
-        List<Student> students = StudentManager.getInstance().sortMathsGradeDecreasing();
-        List<Student> nHighestMathsGradeStudents = new LinkedList<>();
-        for (int i = 0; i < 5; i++) {
-            nHighestMathsGradeStudents.add(students.get(i));
-        }
-        String studentIdsString = StudentManager.getInstance().idOfStudentsToString(nHighestMathsGradeStudents);
-        System.out.print(studentIdsString);
+        List<Student> filteredList = StudentManager.getInstance().filterStudentsHighestMathsGrade(10);
+        StudentManager.print(filteredList);
     }
 
     public static void testFilterStudentsLowestMathsGrade() {
-        init();
-        List<Student> students = StudentManager.getInstance().sortMathsGradeIncreasing();
-        List<Student> nLowestMathsGradeStudents = new LinkedList<>();
-        for (int i = 0; i < 5; i++) {
-            nLowestMathsGradeStudents.add(students.get(i));
-        }
-
-        String codeString = StudentManager.getInstance().idOfStudentsToString(nLowestMathsGradeStudents);
-        System.out.print(codeString);
+        List<Student> filteredList = StudentManager.getInstance().filterStudentsLowestMathsGrade(10);
+        StudentManager.print(filteredList);
     }
 
     public static void testFilterStudentsHighestAverageGrade() {
         /* TODO */
+        List<Student> filteredList = StudentManager.getInstance().filterStudentsHighestAverageGrade(10);
+        StudentManager.print(filteredList);
     }
 
     public static void testFilterStudentsLowestAverageGrade() {
         /* TODO */
+        List<Student> filteredList = StudentManager.getInstance().filterStudentsLowestAverageGrade(10);
+        StudentManager.print(filteredList);
     }
 
     public static void testFilterStudentsHigherThanAverageGrade() {
         /* TODO */
+        List<Student> filteredList = StudentManager.getInstance().filterStudentsHigherThanAverageGrade(7);
+        StudentManager.print(filteredList);
     }
 
     public static void testFilterStudentsLowerThanAverageGrade() {
         /* TODO */
+        List<Student> filteredList = StudentManager.getInstance().filterStudentsLowerThanAverageGrade(9);
+        StudentManager.print(filteredList);
     }
 }

@@ -1,9 +1,6 @@
 package hus.oop.finalexam.de2.studentmanager;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class StudentManager {
     // Singleton pattern
@@ -188,8 +185,7 @@ public class StudentManager {
     public List<Student> filterStudentsHighestPhysicsGrade(int howMany) {
         /* TODO */
         List<Student> filtered = sortPhysicsGradeDecreasing();
-        filtered.subList(0, Math.min(howMany, filtered.size()));
-        return filtered;
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
     }
 
     /**
@@ -200,8 +196,7 @@ public class StudentManager {
     public List<Student> filterStudentsLowestPhysicsGrade(int howMany) {
         /* TODO */
         List<Student> filtered = sortPhysicsGradeIncreasing();
-        filtered.subList(0, Math.min(howMany, filtered.size()));
-        return filtered;
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
     }
 
     /**
@@ -212,8 +207,7 @@ public class StudentManager {
     public List<Student> filterStudentsHighestMathsGrade(int howMany) {
         /* TODO */
         List<Student> filtered = sortMathsGradeDecreasing();
-        filtered.subList(0, Math.min(howMany, filtered.size()));
-        return filtered;
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
     }
 
     /**
@@ -224,8 +218,7 @@ public class StudentManager {
     public List<Student> filterStudentsLowestMathsGrade(int howMany) {
         /* TODO */
         List<Student> filtered = sortMathsGradeIncreasing();
-        filtered.subList(0, Math.min(howMany, filtered.size()));
-        return filtered;
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
     }
 
     /**
@@ -236,8 +229,7 @@ public class StudentManager {
     public List<Student> filterStudentsHighestChemistryGrade(int howMany) {
         /* TODO */
         List<Student> filtered = sortChemistryGradeDecreasing();
-        filtered.subList(0, Math.min(howMany, filtered.size()));
-        return filtered;
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
     }
 
     /**
@@ -248,20 +240,17 @@ public class StudentManager {
     public List<Student> filterStudentsLowestChemistryGrade(int howMany) {
         /* TODO */
         List<Student> filtered = sortChemistryGradeIncreasing();
-        filtered.subList(0, Math.min(howMany, filtered.size()));
-        return filtered;
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
     }
 
     public List<Student> filterStudentsHighestAverageGrade(int howMany) {
         List<Student> filtered = sortAverageGradeDecreasing();
-        filtered.subList(0, Math.min(howMany, filtered.size()));
-        return filtered;
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
     }
 
     public List<Student> filterStudentsLowestAverageGrade(int howMany) {
         List<Student> filtered = sortAverageGradeIncreasing();
-        filtered.subList(0, Math.min(howMany, filtered.size()));
-        return filtered;
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
     }
 
     public static String idOfStudentsToString(List<Student> countryList) {

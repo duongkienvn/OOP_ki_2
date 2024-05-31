@@ -1,9 +1,6 @@
 package hus.oop.finalexam.de3.studentmanager;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class StudentManager {
     // Singleton pattern
@@ -17,6 +14,10 @@ public class StudentManager {
 
     public static StudentManager getInstance() {
         /* TODO */
+        if (instance == null) {
+            instance = new StudentManager();
+        }
+        return instance;
     }
 
     public List<Student> getStudentList() {
@@ -29,6 +30,7 @@ public class StudentManager {
      */
     public void append(Student student) {
         /* TODO */
+        this.studentList.add(student);
     }
 
     /**
@@ -38,6 +40,7 @@ public class StudentManager {
      */
     public void add(Student student, int index) {
         /* TODO */
+        this.studentList.add(index, student);
     }
 
     /**
@@ -46,6 +49,7 @@ public class StudentManager {
      */
     public void remove(int index) {
         /* TODO */
+        this.studentList.remove(index);
     }
 
     /**
@@ -54,6 +58,7 @@ public class StudentManager {
      */
     public void remove(Student student) {
         /* TODO */
+        this.studentList.remove(student);
     }
 
     /**
@@ -63,6 +68,7 @@ public class StudentManager {
      */
     public Student studentAt(int index) {
         /* TODO */
+        return studentList.get(index);
     }
 
     /**
@@ -143,6 +149,9 @@ public class StudentManager {
      */
     public List<Student> sortPhysicsGradeIncreasing() {
         /* TODO */
+        List<Student> sortedList = new LinkedList<>(this.studentList);
+        sortedList.sort(Comparator.comparingDouble(Student::getPhysicsGrade));
+        return sortedList;
     }
 
     /**
@@ -151,6 +160,9 @@ public class StudentManager {
      */
     public List<Student> sortPhysicsGradeDecreasing() {
         /* TODO */
+        List<Student> sortedList = new LinkedList<>(this.studentList);
+        sortedList.sort(Comparator.comparingDouble(Student::getPhysicsGrade).reversed());
+        return sortedList;
     }
 
     /**
@@ -159,6 +171,9 @@ public class StudentManager {
      */
     public List<Student> sortChemistryGradeIncreasing() {
         /* TODO */
+        List<Student> sortedList = new LinkedList<>(this.studentList);
+        sortedList.sort(Comparator.comparingDouble(Student::getChemistryGrade));
+        return sortedList;
     }
 
     /**
@@ -167,6 +182,9 @@ public class StudentManager {
      */
     public List<Student> sortChemistryGradeDecreasing() {
         /* TODO */
+        List<Student> sortedList = new LinkedList<>(this.studentList);
+        sortedList.sort(Comparator.comparingDouble(Student::getChemistryGrade).reversed());
+        return sortedList;
     }
 
     /**
@@ -175,6 +193,9 @@ public class StudentManager {
      */
     public List<Student> sortAverageGradeIncreasing() {
         /* TODO */
+        List<Student> sortedList = new LinkedList<>(this.studentList);
+        sortedList.sort(Comparator.comparingDouble(Student::getAverageGrade));
+        return sortedList;
     }
 
     /**
@@ -183,6 +204,9 @@ public class StudentManager {
      */
     public List<Student> sortAverageGradeDecreasing() {
         /* TODO */
+        List<Student> sortedList = new LinkedList<>(this.studentList);
+        sortedList.sort(Comparator.comparingDouble(Student::getAverageGrade).reversed());
+        return sortedList;
     }
 
     /**
@@ -192,6 +216,8 @@ public class StudentManager {
      */
     public List<Student> filterStudentsHighestPhysicsGrade(int howMany) {
         /* TODO */
+        List<Student> filtered = sortPhysicsGradeDecreasing();
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
     }
 
     /**
@@ -201,6 +227,8 @@ public class StudentManager {
      */
     public List<Student> filterStudentsHigherThanPhysicsGrade(double lowerBoundGrade) {
         /* TODO */
+        List<Student> filteredList = new ArrayList<>(studentList);
+        return filteredList.stream().filter(student -> student.getPhysicsGrade() > lowerBoundGrade).toList();
     }
 
     /**
@@ -210,6 +238,8 @@ public class StudentManager {
      */
     public List<Student> filterStudentsLowestPhysicsGrade(int howMany) {
         /* TODO */
+        List<Student> filtered = sortPhysicsGradeIncreasing();
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
     }
 
     /**
@@ -219,6 +249,8 @@ public class StudentManager {
      */
     public List<Student> filterStudentsLowerThanPhysicsGrade(double upperBoundGrade) {
         /* TODO */
+        List<Student> filteredList = new ArrayList<>(studentList);
+        return filteredList.stream().filter(student -> student.getPhysicsGrade() < upperBoundGrade).toList();
     }
 
     /**
@@ -228,6 +260,8 @@ public class StudentManager {
      */
     public List<Student> filterStudentsHighestMathsGrade(int howMany) {
         /* TODO */
+        List<Student> filtered = sortMathsGradeDecreasing();
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
     }
 
     /**
@@ -237,6 +271,8 @@ public class StudentManager {
      */
     public List<Student> filterStudentsHigherThanMathsGrade(int lowerBoundGrade) {
         /* TODO */
+        List<Student> filteredList = new ArrayList<>(studentList);
+        return filteredList.stream().filter(student -> student.getMathsGrade() > lowerBoundGrade).toList();
     }
 
     /**
@@ -246,6 +282,8 @@ public class StudentManager {
      */
     public List<Student> filterStudentsLowestMathsGrade(int howMany) {
         /* TODO */
+        List<Student> filtered = sortMathsGradeIncreasing();
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
     }
 
     /**
@@ -255,6 +293,8 @@ public class StudentManager {
      */
     public List<Student> filterStudentsLowerThanMathsGrade(double upperBoundGrade) {
         /* TODO */
+        List<Student> filteredList = new ArrayList<>(studentList);
+        return filteredList.stream().filter(student -> student.getMathsGrade() < upperBoundGrade).toList();
     }
 
     /**
@@ -264,6 +304,8 @@ public class StudentManager {
      */
     public List<Student> filterStudentsHighestChemistryGrade(int howMany) {
         /* TODO */
+        List<Student> filtered = sortChemistryGradeDecreasing();
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
     }
 
     /**
@@ -273,6 +315,8 @@ public class StudentManager {
      */
     public List<Student> filterStudentsHigherThanChemistryGrade(int lowerBoundGrade) {
         /* TODO */
+        List<Student> filteredList = new ArrayList<>(studentList);
+        return filteredList.stream().filter(student -> student.getChemistryGrade() > lowerBoundGrade).toList();
     }
 
     /**
@@ -282,6 +326,8 @@ public class StudentManager {
      */
     public List<Student> filterStudentsLowestChemistryGrade(int howMany) {
         /* TODO */
+        List<Student> filtered = sortChemistryGradeIncreasing();
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
     }
 
     /**
@@ -291,6 +337,8 @@ public class StudentManager {
      */
     public List<Student> filterStudentsLowerThanChemistryGrade(int upperBoundGrade) {
         /* TODO */
+        List<Student> filteredList = new ArrayList<>(studentList);
+        return filteredList.stream().filter(student -> student.getChemistryGrade() < upperBoundGrade).toList();
     }
 
     /**
@@ -300,6 +348,8 @@ public class StudentManager {
      */
     public List<Student> filterStudentsHighestAverageGrade(int howMany) {
         /* TODO */
+        List<Student> filtered = sortAverageGradeDecreasing();
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
     }
 
     /**
@@ -309,6 +359,8 @@ public class StudentManager {
      */
     public List<Student> filterStudentsHigherThanAverageGrade(int lowerBoundGrade) {
         /* TODO */
+        List<Student> filteredList = new ArrayList<>(studentList);
+        return filteredList.stream().filter(student -> student.getAverageGrade() > lowerBoundGrade).toList();
     }
 
     /**
@@ -318,6 +370,9 @@ public class StudentManager {
      */
     public List<Student> filterStudentsLowestAverageGrade(int howMany) {
         /* TODO */
+        List<Student> filtered = sortAverageGradeIncreasing();
+        return new ArrayList<>(filtered.subList(0, Math.min(howMany, filtered.size())));
+
     }
 
     /**
@@ -327,6 +382,8 @@ public class StudentManager {
      */
     public List<Student> filterStudentsLowerThanAverageGrade(int upperBoundGrade) {
         /* TODO */
+        List<Student> filteredList = new ArrayList<>(studentList);
+        return filteredList.stream().filter(student -> student.getAverageGrade() < upperBoundGrade).toList();
     }
 
     public static String idOfStudentsToString(List<Student> studentList) {

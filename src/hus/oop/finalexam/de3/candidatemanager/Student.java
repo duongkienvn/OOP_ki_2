@@ -1,4 +1,4 @@
-package hus.oop.finalexam.de3.studentmanager;
+package hus.oop.finalexam.de3.candidatemanager;
 
 public class Student {
     private String id;
@@ -25,37 +25,31 @@ public class Student {
         }
 
         public StudentBuilder withLastname(String lastname) {
-            /* TODO */
             this.lastname = lastname;
             return this;
         }
 
         public StudentBuilder withFirstname(String firstname) {
-            /* TODO */
             this.firstname = firstname;
             return this;
         }
 
         public StudentBuilder withYearOfBirth(int yearOfBirth) {
-            /* TODO */
             this.yearOfBirth = yearOfBirth;
             return this;
         }
 
         public StudentBuilder withMathsGrade(double mathsGrade) {
-            /* TODO */
             this.mathsGrade = mathsGrade;
             return this;
         }
 
         public StudentBuilder withPhysicsGrade(double physicsGrade) {
-            /* TODO */
             this.physicsGrade = physicsGrade;
             return this;
         }
 
         public StudentBuilder withChemistryGrade(double chemistryGrade) {
-            /* TODO */
             this.chemistryGrade = chemistryGrade;
             return this;
         }
@@ -74,55 +68,40 @@ public class Student {
     }
 
     public String getId() {
-        /* TODO */
         return id;
     }
 
     public String getLastname() {
-        /* TODO */
         return lastname;
     }
 
     public String getFirstname() {
-        /* TODO */
         return firstname;
     }
 
     public int getYearOfBirth() {
-        /* TODO */
         return yearOfBirth;
     }
 
     public double getMathsGrade() {
-        /* TODO */
         return mathsGrade;
     }
 
     public double getPhysicsGrade() {
-        /* TODO */
         return physicsGrade;
     }
 
     public double getChemistryGrade() {
-        /* TODO */
         return chemistryGrade;
     }
 
     public double getAverageGrade() {
-        /* TODO */
-        return (getMathsGrade() + getChemistryGrade() + getPhysicsGrade()) / 3;
+        return (mathsGrade + physicsGrade + chemistryGrade) / 3.0;
     }
 
     @Override
     public String toString() {
-        return "Student{" +
-                "id='" + id + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", yearOfBirth=" + yearOfBirth +
-                ", mathsGrade=" + mathsGrade +
-                ", physicsGrade=" + physicsGrade +
-                ", chemistryGrade=" + chemistryGrade +
-                '}';
+        return String.format("Student{id='%s', lastname='%s', firstname='%s', yearOfBirth=%d, mathsGrade=%.2f, physicsGrade=%.2f, chemistryGrade=%.2f}",
+                id, lastname, firstname, yearOfBirth, mathsGrade, physicsGrade, chemistryGrade);
     }
 }
