@@ -1,6 +1,6 @@
-package hus.oop.finalexam.bookmanager;
+package hus.oop.finalexam.de4.mybookmanager;
 
-public class Book implements MyBookComparable {
+public class Book {
     private String title;
     private String author;
     private String genre;
@@ -8,8 +8,7 @@ public class Book implements MyBookComparable {
     private double price;
     private String publisher;
 
-    private Book() {
-    }
+    private Book() {}
 
     public static class BookBuilder {
         private String title;
@@ -91,25 +90,13 @@ public class Book implements MyBookComparable {
 
     @Override
     public String toString() {
-        /* TODO */
-        return String.format("Book{title='%s', author='%s', genre='%s', pages=%d, price=%.2f, publisher='%s'}",
-                title, author, genre, pages, price, publisher);
-    }
-
-    /**
-     * Phương thức đưa ra tiêu chí so sánh 2 đối tượng kiểu Book sao cho
-     * thứ tự tăng dần theo genre, sau đó tăng dần theo title.
-     *
-     * @param another
-     * @return
-     */
-    @Override
-    public int compareTo(Book another) {
-        /* TODO */
-        int genreComparison = this.genre.compareTo(another.genre);
-        if (genreComparison != 0) {
-            return genreComparison;
-        }
-        return this.title.compareTo(another.title);
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", genre='" + genre + '\'' +
+                ", pages=" + pages +
+                ", price=" + price +
+                ", publisher='" + publisher + '\'' +
+                '}';
     }
 }

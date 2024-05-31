@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 public class App {
     private static final String COMMA_DELIMITER = ",";
@@ -26,10 +27,29 @@ public class App {
           <TenSinhVien_MaSinhVien_BookManager>.zip (Ví dụ, NguyenVanA_123456_BookManager.zip),
           nộp lên classroom.
          */
+
+        System.out.println("\nTestSortIncreasingByGenreAndTitle:");
+        testSortIncreasingByGenreAndTitle();
+//        System.out.println("\nTestSortIncreasingGenreAndPrice:");
+//        testSortIncreasingGenreAndPrice();
+        System.out.println();
+        testSortDecreasingGenreAndPrice();
+
+        System.out.println();
+        testFilterBooksHighestPages();
+        System.out.println();
+        testFilterBooksLowestPages();
+        System.out.println();
+        testFilterBooksOfAuthor();
+        System.out.println();
+        testFilterBooksOfGenre();
+        System.out.println();
+        testFilterBooksOfPublisher();
     }
 
     public static void init() {
-        String filePath = "data/books.csv";
+        String filePath = "C:\\Users\\Dell\\eclipse-workspace\\OOP_ki_2" +
+                "\\src\\hus\\oop\\finalexam\\bookmanager\\data\\books.csv";
         readListData(filePath);
     }
 
@@ -63,6 +83,21 @@ public class App {
                     ...
                     .build();
                 */
+                String title = dataList.get(0);
+                String author = dataList.get(1);
+                String genre = dataList.get(2);
+                int pages = Integer.parseInt(dataList.get(3));
+                double prices = Double.parseDouble(dataList.get(4));
+                String publisher = dataList.get(5);
+
+                Book newBook = new Book.BookBuilder(title)
+                        .withAuthor(author)
+                        .withGenre(genre)
+                        .withPages(pages)
+                        .withPrice(prices)
+                        .withPublisher(publisher)
+                        .build();
+                bookManager.append(newBook);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -97,7 +132,15 @@ public class App {
 
     public static void testOriginalData() {
         List<Book> books = bookManager.getBookList();
-        System.out.print(books);
+        bookManager.print(books);
+    }
+
+    /**
+     * Sắp xếp danh sách book theo thứ tự tăng dần theo genre và sau đó đến title.
+     */
+    public static void testSortIncreasingByGenreAndTitle() {
+        List<Book> sorted = bookManager.sortIncreasingByGenreAndTitle();
+        bookManager.print(sorted);
     }
 
     /**
@@ -105,6 +148,8 @@ public class App {
      */
     public static void testSortIncreasingGenreAndPrice() {
         /* TODO */
+        List<Book> sorted = bookManager.sortIncreasingGenreAndPrice();
+        bookManager.print(sorted);
     }
 
     /**
@@ -112,6 +157,8 @@ public class App {
      */
     public static void testSortDecreasingGenreAndPrice() {
         /* TODO */
+        List<Book> sorted = bookManager.sortDecreasingGenreAndPrice();
+        bookManager.print(sorted);
     }
 
     /**
@@ -119,6 +166,8 @@ public class App {
      */
     public static void testPriceOfBooksIncreasing() {
         /* TODO */
+        List<Book> sorted = bookManager.sortIncreasingPrice();
+        bookManager.print(sorted);
     }
 
     /**
@@ -126,20 +175,26 @@ public class App {
      */
     public static void testPriceOfBooksDecreasing() {
         /* TODO */
+        List<Book> sorted = bookManager.sortDecreasingPrice();
+        bookManager.print(sorted);
     }
 
     /**
-     * Test lọc sách có giá rẻ nhất.
+     * Test lọc sách có số trang ít nhat.
      */
-    public static void testFilterBooksLowestPrice() {
+    public static void testFilterBooksLowestPages() {
         /* TODO */
+        List<Book> filtered = bookManager.filterBookLowestPages(10);
+        bookManager.print(filtered);
     }
 
     /**
-     * Test lọc sách có giá cao nhất.
+     * Test lọc sách có số trang nhiều nhât
      */
-    public static void testFilterBooksHighestPrice() {
+    public static void testFilterBooksHighestPages() {
         /* TODO */
+        List<Book> filtered = bookManager.filterHighestPages(10);
+        bookManager.print(filtered);
     }
 
     /**
@@ -147,6 +202,8 @@ public class App {
      */
     public static void testFilterBooksOfAuthor() {
         /* TODO */
+        List<Book> filtered = bookManager.filterBooksOfAuthor("Foreman John");
+        bookManager.print(filtered);
     }
 
     /**
@@ -154,6 +211,8 @@ public class App {
      */
     public static void testFilterBooksOfPublisher() {
         /* TODO */
+        List<Book> filtered = bookManager.filterBooksOfPublisher("Penguin");
+        bookManager.print(filtered);
     }
 
     /**
@@ -161,5 +220,7 @@ public class App {
      */
     public static void testFilterBooksOfGenre() {
         /* TODO */
+        List<Book> filtered = bookManager.filterBooksOfGenre("economics");
+        bookManager.print(filtered);
     }
 }

@@ -1,6 +1,6 @@
 package hus.oop.finalexam.bookmanager;
 
-public class SortedByGenreAndPrice implements MyBookComparator {
+public class SortedByIncreasingGenreAndPrice implements MyBookComparator {
     @Override
     public int compare(Book left, Book right) {
         int genreComparison = left.getTitle().compareTo(right.getTitle());

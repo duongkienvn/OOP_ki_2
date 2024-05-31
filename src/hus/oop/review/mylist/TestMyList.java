@@ -25,7 +25,7 @@ public class TestMyList {
         list.append(3.5);
         list.append(4.5);
         list.append(5.5);
-        System.out.println("Data in my list: " + list.toString());
+        System.out.println("Data in my list: " + list);
 
         BasicStatistic basicStatistic = new BasicStatistic(list);
         System.out.println("Max data in my list: " + basicStatistic.max());

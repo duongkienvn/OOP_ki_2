@@ -106,12 +106,7 @@ public class BookManager {
     public List<Book> sortIncreasingGenreAndPrice() {
         /* TODO */
         List<Book> sortedList = new LinkedList<>(bookList);
-        sortedList.sort(new Comparator<Book>() {
-            @Override
-            public int compare(Book o1, Book o2) {
 
-            }
-        });
         return sortedList;
     }
 
@@ -123,6 +118,9 @@ public class BookManager {
      */
     public List<Book> sortDecreasingGenreAndPrice() {
         /* TODO */
+        List<Book> sortedList = new LinkedList<>(bookList);
+        sortedList.sort((Comparator<Book>) new SortedByDecreasingGenreAndPrice());
+        return sortedList;
     }
 
     /**
@@ -294,12 +292,12 @@ public class BookManager {
         return titleOfBooks.toString().trim() + "\n]";
     }
 
-    public static void print(List<Book> bookList) {
+    public void print(List<Book> bookList) {
         StringBuilder booksString = new StringBuilder();
         booksString.append("[\n");
         for (Book book : bookList) {
             booksString.append(book.toString()).append("\n");
         }
-        System.out.print(booksString.toString().trim() + "\n]");
+        System.out.println(booksString.toString().trim() + "\n]");
     }
 }
