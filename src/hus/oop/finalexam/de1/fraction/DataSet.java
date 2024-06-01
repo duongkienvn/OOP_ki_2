@@ -101,7 +101,6 @@ public class DataSet {
     public Fraction[] sortDecreasing() {
         /* TODO */
         Fraction[] sorted = data.clone();
-        FractionComparator comparator = new DecreasingOrderFraction();
         Arrays.sort(sorted, new Comparator<Fraction>() {
             @Override
             public int compare(Fraction o1, Fraction o2) {

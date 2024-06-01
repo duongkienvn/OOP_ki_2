@@ -189,7 +189,7 @@ public class StudentManager {
      */
     public MyList filterStudentsHighestAverageGrade(int howMany) {
         /* TODO */
-        MyList filteredList = sortMathsGradeDecreasing();
+        MyList filteredList = sortAverageGradeDecreasing();
         int min = Math.min(howMany, filteredList.size());
         MyList result = new MyArrayList();
         for (int i = 0; i < min; i++) {
@@ -206,7 +206,7 @@ public class StudentManager {
      */
     public MyList filterStudentsLowestAverageGrade(int howMany) {
         /* TODO */
-        MyList filteredList = sortMathsGradeIncreasing();
+        MyList filteredList = sortAverageGradeIncreasing();
         int min = Math.min(howMany, filteredList.size());
         MyList result = new MyArrayList();
         for (int i = 0; i < min; i++) {
